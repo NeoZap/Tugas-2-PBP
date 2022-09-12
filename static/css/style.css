@@ -1,0 +1,61 @@
+html,
+body {
+    height: 100vh;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+h5 {
+    font-size: 22px;
+}
+
+h5,
+p {
+    display: inline;
+}
+
+.wrapper {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2em;
+}
+
+.student-wrap {
+    display: flex;
+    justify-content: center;
+    gap: 5em;
+}
+
+.table-wrap {
+    display: flex;
+    justify-content: center;
+}
+
+table {
+    background-color: black;
+    border: .5px solid rgb(200, 200, 200);
+    width: 80%;
+}
+
+td,
+th {
+    padding: .5em;
+}
+
+th {
+    background-color: cornsilk;
+}
+
+td {
+    background-color: cadetblue;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+}
