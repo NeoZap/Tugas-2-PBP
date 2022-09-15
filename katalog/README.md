@@ -2,7 +2,7 @@
 [Klik disini untuk mengakses :)](https://tugas-2-pbp-neozap.herokuapp.com/katalog/)
 
 ## Bagan
-![](https://i.imgur.com/nQzzjRO.png)
+![Bagan](../assets/Bagan_PBP_Tugas2.png)
 ###### Referensi: https://pbp-fasilkom-ui.github.io/ganjil-2023/assignments/tutorial/tutorial-1/
 
 1. User / Client memasukkan url.
