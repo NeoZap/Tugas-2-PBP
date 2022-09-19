@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="wrapper">
+    <h1>Assignment 3 PBP/PBD</h1>
+
+    <div class="table-wrap">
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Release Date</th>
+                <th>Rating</th>
+                <th>Review</th>
+                <th>Watched</th>
+            </tr>
+            {% for movie in mywatchlist %}
+            <tr>
+                <td>{{movie.title}}</td>
+                <td>{{movie.release_date}}</td>
+                <td>{{movie.rating}}</td>
+                <td>{{movie.review}}</td>
+                <td>{{movie.watched}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <h5>{{msg}}</h5>
+</div>
+{% endblock content %}

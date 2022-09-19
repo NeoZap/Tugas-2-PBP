@@ -1,0 +1,112 @@
+[
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 1,
+        "fields": {
+            "watched": true,
+            "title": "LycoReco",
+            "rating": 8.2,
+            "release_date": "2022-07-02",
+            "review": "LycoReco Peko"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 2,
+        "fields": {
+            "watched": false,
+            "title": "Morbius",
+            "rating": 6.9,
+            "release_date": "2021-03-30",
+            "review": "It's morbin time"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 3,
+        "fields": {
+            "watched": false,
+            "title": "The Big Bang Theory",
+            "rating": 8.2,
+            "release_date": "2007-09-24",
+            "review": "Bagus (paling)"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 4,
+        "fields": {
+            "watched": true,
+            "title": "Dark",
+            "rating": 8.8,
+            "release_date": "2017-12-01",
+            "review": "B agus"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 5,
+        "fields": {
+            "watched": false,
+            "title": "Stranger Things",
+            "rating": 8.7,
+            "release_date": "2016-07-15",
+            "review": "Bagus (paling)"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 6,
+        "fields": {
+            "watched": true,
+            "title": "Kimi no Na Wa Udin",
+            "rating": 6.9,
+            "release_date": "2016-08-26",
+            "review": "Udin"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 7,
+        "fields": {
+            "watched": true,
+            "title": "Your Lies in April",
+            "rating": 8.1,
+            "release_date": "2014-04-11",
+            "review": "Cicak (bukan binkadal (i think)) :("
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 8,
+        "fields": {
+            "watched": true,
+            "title": "Aegleseeker",
+            "rating": 8.2,
+            "release_date": "2021-05-11",
+            "review": "And in that light, I'll find deliverance."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 9,
+        "fields": {
+            "watched": true,
+            "title": "Violet Evergrande",
+            "rating": 8.6,
+            "release_date": "2018-01-18",
+            "review": "evergrande."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 10,
+        "fields": {
+            "watched": false,
+            "title": "Gatau",
+            "rating": 0,
+            "release_date": "TBA",
+            "review": "Bingung"
+        }
+    }
+]
