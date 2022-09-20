@@ -25,7 +25,7 @@ class MyWatchList(models.Model):
 ```
 4. Menambahkan 10 data movies pada aplikasi sesuai yang ada di `mywatchlist/fixtures/initial_watchlist_data.json`
 5. Data movies tersebut akan kita keluarkan dalam 3 format, yakni HTML, XML, dan JSON sesuai request dari user. Maka buat 3 fungsi di `mywatchlist/views.py` yang setiap fungsi akan menampilkan data sesuai format yang direquest user. Pada format HTML, user juga akan diberi detail apabila sudah menonton banyak film atau belum pada watchlistnya. <br></br>Berikut ketiga fungsinya:
-```python=
+```python
 def show_mywatchlist(request):
     mywatchlist = MyWatchList.objects.all()
     watched = 0
@@ -80,3 +80,11 @@ class MyWatchListTests(TestCase):
         resp = self.client.get("/mywatchlist/xml/")
         self.assertEqual(resp.status_code, 200)
 ```
+9. Mengecek apakah hasil deploy dapat diakses dengan lancar (me-return status 200 OK) dengan Postman.
+
+- Endpoint HTML:
+![](https://i.imgur.com/MbROutm.png)
+- Endpoint XML:
+![](https://i.imgur.com/zRXR1ok.png)
+- Endpoint JSON:
+![](https://i.imgur.com/SmkEz9E.png)
