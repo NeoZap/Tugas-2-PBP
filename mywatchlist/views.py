@@ -8,7 +8,8 @@ def show_mywatchlist(request):
     watched = 0
     for movie in mywatchlist:
         watched += movie.watched
-    not_watched = len(mywatchlist)
+    not_watched = len(mywatchlist) - watched
+    
     if watched >= not_watched:
         msg = "Selamat, kamu sudah banyak menonton!"
     else:
