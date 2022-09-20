@@ -5,7 +5,7 @@
         "fields": {
             "watched": true,
             "title": "LycoReco",
-            "rating": 8.2,
+            "rating": 4.1,
             "release_date": "2022-07-02",
             "review": "LycoReco Peko"
         }
@@ -16,7 +16,7 @@
         "fields": {
             "watched": false,
             "title": "Morbius",
-            "rating": 6.9,
+            "rating": 3.4,
             "release_date": "2021-03-30",
             "review": "It's morbin time"
         }
@@ -27,7 +27,7 @@
         "fields": {
             "watched": false,
             "title": "The Big Bang Theory",
-            "rating": 8.2,
+            "rating": 4.1,
             "release_date": "2007-09-24",
             "review": "Bagus (paling)"
         }
@@ -38,7 +38,7 @@
         "fields": {
             "watched": true,
             "title": "Dark",
-            "rating": 8.8,
+            "rating": 4.4,
             "release_date": "2017-12-01",
             "review": "B agus"
         }
@@ -49,7 +49,7 @@
         "fields": {
             "watched": false,
             "title": "Stranger Things",
-            "rating": 8.7,
+            "rating": 4.3,
             "release_date": "2016-07-15",
             "review": "Bagus (paling)"
         }
@@ -60,7 +60,7 @@
         "fields": {
             "watched": true,
             "title": "Kimi no Na Wa Udin",
-            "rating": 6.9,
+            "rating": 4,
             "release_date": "2016-08-26",
             "review": "Udin"
         }
@@ -71,7 +71,7 @@
         "fields": {
             "watched": true,
             "title": "Your Lies in April",
-            "rating": 8.1,
+            "rating": 4.1,
             "release_date": "2014-04-11",
             "review": "Cicak (bukan binkadal (i think)) :("
         }
@@ -82,7 +82,7 @@
         "fields": {
             "watched": true,
             "title": "Aegleseeker",
-            "rating": 8.2,
+            "rating": 4.1,
             "release_date": "2021-05-11",
             "review": "And in that light, I'll find deliverance."
         }
@@ -93,9 +93,9 @@
         "fields": {
             "watched": true,
             "title": "Violet Evergrande",
-            "rating": 8.6,
+            "rating": 4.3,
             "release_date": "2018-01-18",
-            "review": "evergrande."
+            "review": "Evergrande"
         }
     },
     {
@@ -103,10 +103,10 @@
         "pk": 10,
         "fields": {
             "watched": false,
-            "title": "Gatau",
-            "rating": 0,
-            "release_date": "TBA",
-            "review": "Bingung"
+            "title": "Takagi-san",
+            "rating": 3.4,
+            "release_date": "2018-01-08",
+            "review": "Perjalanan ilolslayer menuju top global osu mania."
         }
     }
 ]
