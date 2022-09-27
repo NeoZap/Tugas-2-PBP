@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h5>Selamat datang, </h5>
+<p>{{name}}!</p>
+
+{% if todo_list %}
+<!-- <form method='post' class="form-group"> -->
+{% csrf_token %}
+<table>
+    <tr>
+        <th>Nama Task</th>
+        <th>Tanggal dibuat</th>
+        <th>Deskripsi</th>
+        <th>Status</th>
+        <th>Ubah Status</th>
+        <th>Hapus</th>
+    </tr>
+    {% comment %} Tambahkan data di bawah baris ini {% endcomment %}
+
+    {% for task in todo_list %}
+    <tr>
+        <td>{{task.title}}</td>
+        <td>{{task.date}}</td>
+        <td>{{task.description}}</td>
+        {% if task.is_finished %}
+        <td>Sudah</td>
+        {% else %}
+        <td>Belum</td>
+        {% endif %}
+
+        <td><a href="{% url 'todolist:change_task' task.id %}"><button>Ubah Status</button></a></td>
+        <td><a href="{% url 'todolist:delete_task' task.id %}"><button>Hapus Task</button></a></td>
+    </tr>
+    {% endfor %}
+</table>
+<!-- </form> -->
+{% else %}
+<br>
+<p>Kamu belum membuat todo list, silakan buat dengan mengklik tombol "Buat Todolist" dibawah ini!</p><br>
+{% endif %}
+<button><a href="{% url 'todolist:create_task' %}">Buat Todolist</a></button>
+<button><a href="{% url 'todolist:logout' %}">Logout</a></button>
+{% endblock content %}
