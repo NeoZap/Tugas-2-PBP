@@ -1,5 +1,6 @@
 # Tugas PBP
-### [Klik disini untuk mengakses :)](https://tugas-2-pbp-neozap.herokuapp.com/katalog/)
+### [Klik disini untuk mengakses :)](https://tugas-2-pbp-neozap.herokuapp.com/)
+### NB: Untuk link langsung menuju masing-masing tugas, dapat dilihat di folder aplikasi tugas terkait ya :)
 <br><br>
 # Tugas 2
 ## Bagan
