@@ -1,5 +1,5 @@
 # My WatchList (Tugas 3)
-### [Klik disini untuk mengakses :)](https://tugas-2-pbp-neozap.herokuapp.com/katalog/)
+### [Klik disini untuk mengakses :)](https://tugas-2-pbp-neozap.herokuapp.com/mywatchlist/)
 ##  Jelaskan perbedaan antara JSON, XML, dan HTML!
 **1. HTML**
 HTML merupakan singkatan dari HyperText Markup Language. HTML tidak dapat digunakan untuk Data Delivery, melainkan HTML mendefinisikan struktur dari suatu website.<br>
