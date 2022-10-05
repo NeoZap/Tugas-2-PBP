@@ -1,30 +1,30 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="wrapper">
-    <h1>Assignment 3 PBP/PBD</h1>
+<div class="flex justify-center items-center flex-col gap-10 text-center p-1 w-full mt-6">
+    <h1 class="font-bold text-3xl">Assignment 3 PBP/PBD</h1>
 
-    <div class="table-wrap">
-        <table>
-            <tr>
-                <th>Title</th>
-                <th>Release Date</th>
-                <th>Rating</th>
-                <th>Review</th>
-                <th>Watched</th>
+    <div class="flex justify-center items-center overflow-x-auto w-4/5">
+        <table class="table-auto table-zebra w-full border">
+            <tr class="p-2 border bg-primary">
+                <th class="p-2 border">Title</th>
+                <th class="p-2 border">Release Date</th>
+                <th class="p-2 border">Rating</th>
+                <th class="p-2 border">Review</th>
+                <th class="p-2 border">Watched</th>
             </tr>
             {% for movie in mywatchlist %}
-            <tr>
-                <td>{{movie.title}}</td>
-                <td>{{movie.release_date}}</td>
-                <td>{{movie.rating}}</td>
-                <td>{{movie.review}}</td>
-                <td>{{movie.watched}}</td>
+            <tr class="p-2 border">
+                <td class="p-2 border">{{movie.title}}</td>
+                <td class="p-2 border">{{movie.release_date}}</td>
+                <td class="p-2 border">{{movie.rating}}</td>
+                <td class="p-2 border">{{movie.review}}</td>
+                <td class="p-2 border">{{movie.watched}}</td>
             </tr>
             {% endfor %}
         </table>
     </div>
 
-    <h5>{{msg}}</h5>
+    <h5 class="font-bold text-2xl">{{msg}}</h5>
 </div>
 {% endblock content %}

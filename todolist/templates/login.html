@@ -6,39 +6,43 @@
 
 {% block content %}
 
-<div class="login">
+<div class="login flex flex-col justify-center items-center min-h-[90vh]">
+    <div class="border rounded-2xl flex flex-col bg-base-300 text-center shadow-lg mx-6 md:mx-4">
+        <h1 class="font-bold text-3xl p-4 bg-primary rounded-t-2xl ">Login</h1>
 
-    <h1>Login</h1>
+        <form method="POST" action="" class="flex flex-col justify-center items-center gap-2 p-4">
+            {% csrf_token %}
+            <div class="flex items-center gap-2">
+                <label>Username: </label>
+                <input type="text" name="username" placeholder="Username" class="form-condivol input w-full max-w-xs">
+            </div>
 
-    <form method="POST" action="">
-        {% csrf_token %}
-        <table>
-            <tr>
-                <td>Username: </td>
-                <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
-            </tr>
+            <div class="flex items-center gap-2">
+                <label>Password: </label>
+                <input type="password" name="password" placeholder="Password"
+                    class="form-condivol input w-full max-w-xs">
+            </div>
 
-            <tr>
-                <td>Password: </td>
-                <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
-            </tr>
+            <div>
+                <label><input class="btn btn-primary" type="submit" value="Login"></label>
+            </div>
+        </form>
 
-            <tr>
-                <td></td>
-                <td><input class="btn login_btn" type="submit" value="Login"></td>
-            </tr>
-        </table>
-    </form>
+        {% if messages %}
+        <div class="p-4 rounded-b-2xl bg-error m-b-sm">
+            <ul>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
 
-    {% if messages %}
-    <ul>
-        {% for message in messages %}
-        <li>{{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
-
-    Belum mempunyai akun? <a href="{% url 'todolist:register' %}">Buat Akun</a>
+    </div>
+    <div class="text-center p-4 flex flex-col gap-2">
+        <div class="font-semibold">Belum mempunyai akun?</div>
+        <a href="{% url 'todolist:register' %}" class="btn bg-base-100 hover:bg-base:200">Buat Akun</a>
+    </div>
 
 </div>
 

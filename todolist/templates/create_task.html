@@ -5,18 +5,26 @@
 {% endblock meta %}
 
 {% block content %}
+<div class="login w-full flex flex-col items-center mt-14">
+    <form method="POST" class="flex flex-col items-center mx-6 md:mx-4">
+        <div class="flex flex-col gap-2 bg-white rounded-lg p-4 shadow-md">
+            {% csrf_token %}
 
-<div class="login">
-    <h1>Buat Task</h1>
-    <form method="POST">
-        {% csrf_token %}
-        <table>
-            {{ form.as_table }}
-            <tr>
-                <td></td>
-                <td><input type="submit" name="submit" value="Tambahkan" /></td>
-            </tr>
-        </table>
+            <h1 class="font-bold text-xl text-gray-700 text-center">Create todo</h1>
+
+            <div class="flex flex-col items-start gap-2 w-full">
+                <label for="id_title">Title</label>
+                <input class="input input-bordered w-full max-w-x" type="text" name="title" maxlength="50" required=""
+                    id="id_title" />
+            </div>
+            <div class="flex flex-col items-start gap-2 w-full">
+                <label for="id_description">Description</label>
+                <textarea class="textarea textarea-bordered w-full" name="description" cols="40" rows="10"
+                    maxlength="1000" required="" id="id_description"></textarea>
+            </div>
+
+        </div>
+        <input class="btn w-[100px] mt-4" type="submit" name="submit" value="Create">
     </form>
 </div>
 {% endblock content %}

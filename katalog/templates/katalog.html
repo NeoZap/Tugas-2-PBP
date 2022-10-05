@@ -2,39 +2,41 @@
 
 {% block content %}
 
-<div class="wrapper">
-  <h1>Assignment 2 PBP/PBD</h1>
+<div class="flex justify-center items-center flex-col gap-10 text-center p-1 w-full mt-6">
+  <h1 class="font-bold text-3xl">Assignment 2 PBP/PBD</h1>
 
-  <div class="student-wrap">
-    <div class="student-wrap-1">
-      <h5>Name: </h5>
+  <div class="flex flex-row gap-20 justify-center font-semibold">
+    <div class="flex flex-row gap-2">
+      <h5 class="inline">Name: </h5>
       <p>{{name}}</p>
     </div>
 
-    <div class="student-wrap-2">
-      <h5>Student ID: </h5>
+    <div class="flex flex-row gap-2">
+      <h5 class="inline">Student ID: </h5>
       <p>{{npm}}</p>
     </div>
   </div>
 
-  <div class="table-wrap">
-    <table>
-      <tr>
-        <th>Item Name</th>
-        <th>Item Price</th>
-        <th>Item Stock</th>
-        <th>Rating</th>
-        <th>Description</th>
-        <th>Item URL</th>
+  <div class="flex justify-center items-center overflow-x-auto w-4/5">
+    <table class="table-auto table-zebra w-full border">
+      <tr class="p-2 border bg-primary">
+        <th class="p-2 border">Item Name</th>
+        <th class="p-2 border">Item Price</th>
+        <th class="p-2 border">Item Stock</th>
+        <th class="p-2 border">Rating</th>
+        <th class="p-2 border">Description</th>
+        <th class="p-2 border">Item URL</th>
       </tr>
       {% for item in item_catalog %}
-      <tr>
-        <td>{{item.item_name}}</td>
-        <td>Rp. {{item.item_price}}</td>
-        <td>{{item.item_stock}}</td>
-        <td>{{item.rating}}</td>
-        <td>{{item.description}}</td>
-        <td><a href={{item.item_url}}>{{item.item_url}}</a></td>
+      <tr class="p-4 border">
+        <td class="p-4 border">{{item.item_name}}</td>
+        <td class="p-4 border">Rp. {{item.item_price}}</td>
+        <td class="p-4 border">{{item.item_stock}}</td>
+        <td class="p-4 border">{{item.rating}}</td>
+        <td class="p-4 border">{{item.description}}</td>
+        <td class="p-4 border"><a class="bg-slate-500 hover:bg-slate-600 rounded-md px-4 py-2 font-bold text-white"
+            href={{item.item_url}}>Mari kesini gan</a>
+        </td>
       </tr>
       {% endfor %}
     </table>
