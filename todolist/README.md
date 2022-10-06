@@ -237,7 +237,11 @@ Selain selector diatas, dapat diintegrasikan combinators agar dapat lebih meng-s
     ```
 
 ## Implementasi
-- Menggunakan framework Tailwind CSS, dan daisyUI.
+- Menggunakan framework Tailwind CSS, dan daisyUI dengan menambahkan 
+```css
+<link href="https://cdn.jsdelivr.net/npm/daisyui@2.31.0/dist/full.css" rel="stylesheet" type="text/css" />
+<script src="https://cdn.tailwindcss.com"></script>
+``` pada elemen `<head>` di `base.html`
 - Membaca dokumentasi komponen daisyUI dan menerapkannya ke HTML saya. Adapun dokumentasinya dapat diakses pada laman berikut : https://daisyui.com/components/
 - Membaca cheatsheet Tailwind CSS dan menerapkannya pada HTML saya. Adapun cheatsheetnya dapat diakses pada laman berikut: https://nerdcave.com/tailwind-cheat-sheet
 - Dengan tekat yang kuat akhirnya seluruh tugas 4 (dan bahkan tugas 2 dan 3 juga) dapat distyling.
