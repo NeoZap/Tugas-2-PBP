@@ -56,6 +56,13 @@ def register(request):
             form.save()
             messages.success(request, 'Akun telah berhasil dibuat!')
             return redirect('todolist:login')
+        else:
+            # form_errors = form.errors
+            # form_errors = form_errors.as_data()
+            # form_errors = list(form_errors.values())
+            # print(form_errors)
+            # messages.error(request, form.errors)
+            messages.error(request, 'Akun gagal dibuat!')
     
     context = {'form':form}
     return render(request, 'register.html', context)

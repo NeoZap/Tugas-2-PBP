@@ -29,7 +29,7 @@
         </form>
 
         {% if messages %}
-        <div class="p-4 rounded-b-2xl bg-error m-b-sm">
+        <div class="p-4 rounded-b-2xl bg-error m-b-sm break-words">
             <ul>
                 {% for message in messages %}
                 <li>{{ message }}</li>
@@ -39,7 +39,7 @@
         {% endif %}
 
     </div>
-    <div class="text-center p-4 flex flex-col gap-2">
+    <div class=" text-center p-4 flex flex-col gap-2">
         <div class="font-semibold">Belum mempunyai akun?</div>
         <a href="{% url 'todolist:register' %}" class="btn bg-base-100 hover:bg-base:200">Buat Akun</a>
     </div>

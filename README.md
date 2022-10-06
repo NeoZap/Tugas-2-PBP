@@ -215,3 +215,145 @@ urlpatterns = [
 ]
 ```
 - Push ke github dan akan dideploy ke heroku secara otomatis oleh `dpl.yml`
+
+# Tugas 5
+### Apa perbedaan dari Inline, Internal, dan External CSS? Apa saja kelebihan dan kekurangan dari masing-masing style?
+- **Inline**
+    CSS diletakkan sebaris atau lebih tepatnya didalam suatu elemen HTML.
+    contoh:
+    ```html
+    <p style="text-color: red">
+        Ini inline
+    </p>
+    ```
+    Pros: Cepat dan praktis
+    Cons: Tidak dapat styling banyak elemen sekaligus
+- **Internal**
+    CSS diletakkan pada elemen `<style>` pada file HTML.
+    contoh:
+    ```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <style>
+    body {
+      background-color: linen;
+    }
+
+    h1 {
+      color: maroon;
+      margin-left: 40px;
+    }
+    </style>
+    </head>
+    <body>
+
+    <h1>This is a heading</h1>
+    <p>This is a paragraph.</p>
+
+    </body>
+    </html>
+    ```
+    Pros: Cukup optimal untuk file HTML berukuran kecil-sedang.
+    Cons: File HTML agak kurang sedap dipandang karena linenya akan membengkak. Susah untuk styling karena harus scroll untuk bisa styling.
+- **External**
+    CSS diletakkan di file berbeda dengan format `.css`. Pada contoh dibawah styling diterapkan pada file `mystyle.css`.
+    ```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <link rel="stylesheet" href="mystyle.css">
+    </head>
+    <body>
+
+    <h1>This is a heading</h1>
+    <p>This is a paragraph.</p>
+
+    </body>
+    </html>
+    ```
+    
+    Pros: Rapi, dalam artian tidak memperbanyak line pada file HTML. Selain itu style akan lebih mudah dipakai lagi (reusable). Juga bisa memisah css dalam beberapa file (misal per fungsionalitas) sehingga lebih rapi.
+    Cons: Agak cukup susah tracing jika terdapat bug karena styling terletak pada  file yang berbeda. Untuk kode HTML yang kecil agak tidak optimal. Memperlambat loading time.
+     
+## Jelaskan tag HTML5 yang kamu ketahui.
+- `<p>` untuk membuat paragraf.
+- `<h1>` untuk membuat heading 1.
+- `<h2>` untuk membuat heading 2.
+- `<h3>` untuk membuat heading 3.
+- `<h4>` untuk membuat heading 4.
+- `<h5>` untuk membuat heading 5.
+- `<h6>` untuk membuat heading 6.
+- `<style>` untuk menaruh internal css.
+- `<form>` untuk mendeklarasi awal mula form, disertakan juga method requestnya.
+- `<div>` tag yang digunakan untuk separasi antar elemen. Sangat berguna untuk styling.
+
+##  Jelaskan tipe-tipe CSS selector yang kamu ketahui.
+- Element selector
+    Mereference suatu elemen HTML untuk styling elemen tersebut.
+    contoh:
+    ```css
+    h1: {
+        font-weight: normal;
+    }
+    ```
+- Class selector
+    Mereference nama class untuk distyling. Gunakan format `.NAMA_CLASS` untuk mereference.
+    contoh:
+    ```css
+    .NAMA_CLASS {
+        css-property: value;
+    }
+    ```
+- Id selector
+    Mereference nama id untuk distyling. Gunakan format `#NAMA_ID`.
+    contoh:
+    ```css
+    #NAMA_ID {
+        css-property: value;   
+    }
+    ```
+
+Selain selector diatas, dapat diintegrasikan combinators agar dapat lebih meng-specify reference elemen yang ingin distyling. Format dari combinator sendiri adalah `x {combinator} y`. Adapun contoh combinators adalah:
+- Descendant selector (space)
+    Specify semua elemen y yang didalam x (termasuk grandchild, grand-grandchild, and so on). Contoh: 
+    ```css
+    div p {
+        
+    }
+    ```
+- Child selector (>)
+    Specify hanya y yang tepat menjadi child dari x. Contoh:
+    ```css
+    div > p {
+        
+    }
+    ```
+- Adjacent sibling selector (+)
+    Specify sebuah y yang berupa sibling dari x dan berada tepat setelah (dibawah) x. Contoh:
+    ```css
+    div + p {
+        
+    }
+    
+    akan meselect p dengan layout:
+    <div></div>
+    <p></p>
+    
+    dan tidak akan meselect p dengan layout:
+    <div></div>
+    <h1></h1>
+    <p></p>
+    ```
+- General sibling selector (~)
+    Specify semua y yang berupa sibling setelah x. Contoh:
+    ```css
+    div ~ p {
+    }
+    ```
+
+## Implementasi
+- Menggunakan framework Tailwind CSS, dan daisyUI.
+- Membaca dokumentasi komponen daisyUI dan menerapkannya ke HTML saya. Adapun dokumentasinya dapat diakses pada laman berikut : https://daisyui.com/components/
+- Membaca cheatsheet Tailwind CSS dan menerapkannya pada HTML saya. Adapun cheatsheetnya dapat diakses pada laman berikut: https://nerdcave.com/tailwind-cheat-sheet
+- Dengan tekat yang kuat akhirnya seluruh tugas 4 (dan bahkan tugas 2 dan 3 juga) dapat distyling.
