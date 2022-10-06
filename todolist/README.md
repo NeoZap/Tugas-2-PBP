@@ -244,5 +244,6 @@ Selain selector diatas, dapat diintegrasikan combinators agar dapat lebih meng-s
 ``` 
 pada elemen `<head>` di `base.html`
 - Membaca dokumentasi komponen daisyUI dan menerapkannya ke HTML saya. Adapun dokumentasinya dapat diakses pada laman berikut : https://daisyui.com/components/
+
 - Membaca cheatsheet Tailwind CSS dan menerapkannya pada HTML saya. Adapun cheatsheetnya dapat diakses pada laman berikut: https://nerdcave.com/tailwind-cheat-sheet
 - Dengan tekat yang kuat akhirnya seluruh tugas 4 (dan bahkan tugas 2 dan 3 juga) dapat distyling.
