@@ -49,22 +49,28 @@ def create_task(request):
 
 def register(request):
     form = UserCreationForm()
+    form_errors = ""
 
     if request.method == "POST":
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
+            storage = messages.get_messages(request)
+            storage.used = True
             messages.success(request, 'Akun telah berhasil dibuat!')
             return redirect('todolist:login')
         else:
-            # form_errors = form.errors
-            # form_errors = form_errors.as_data()
-            # form_errors = list(form_errors.values())
-            # print(form_errors)
-            # messages.error(request, form.errors)
-            messages.error(request, 'Akun gagal dibuat!')
+            form_errors = form.errors
+            form_errors = form_errors.get('password2')
+            if form_errors:
+                form_errors = form_errors.as_data()
+                form_errors = "".join([str(error) for error in form_errors])
+                form_errors = [errors for errors in form_errors.split("'") if '[' not in errors and ']' not in errors]
+                messages.error(request, form_errors)
+            else:
+                messages.error(request, 'Akun gagal dibuat!')
     
-    context = {'form':form}
+    context = {'form':form, 'messages': form_errors}
     return render(request, 'register.html', context)
 
 def login_user(request):

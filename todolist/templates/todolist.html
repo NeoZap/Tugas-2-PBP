@@ -11,7 +11,6 @@
 {% block content %}
 <div class="flex justify-center items-center flex-col gap-10 text-center p-1 w-full">
 
-    {% if todo_list %}
     <div class="flex flex-col justify-start items-center w-[90vw] md:w-3/5 min-h-screen gap-4">
         {% csrf_token %}
         <div class="flex justify-between items-center w-full">
@@ -22,6 +21,7 @@
         </div>
         <div class="text-2xl font-bold text-secondary"><span class="text-3xl text-primary">{{name}}</span>'s todolist:
         </div>
+        {% if todo_list %}
         {% for task in todo_list %}
         <div
             class="card w-full md:w-3/5 break-words bg-base-100 shadow-xl text-left glass mt-5 mb-5 transform duration-200 transition hover:scale-105">
@@ -69,10 +69,13 @@
             </div>
         </div>
         {% endfor %}
+        {% else %}
+        <br>
+        <p class="text-lg">
+            Kamu belum membuat todo list, silakan buat dengan mengklik tombol "Buat Todolist" di atas!
+        </p>
+        <br>
+        {% endif %}
     </div>
-    {% else %}
-    <br>
-    <p>Kamu belum membuat todo list, silakan buat dengan mengklik tombol "Buat Todolist"!</p><br>
-    {% endif %}
 </div>
 {% endblock content %}
