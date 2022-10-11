@@ -11,7 +11,7 @@
 {% block content %}
 <div class="flex justify-center items-center flex-col gap-10 text-center p-1 w-full">
 
-    <div class="flex flex-col justify-start items-center w-[90vw] md:w-3/5 min-h-screen gap-4">
+    <div class="flex flex-col justify-start items-center w-[90vw] md:w-4/5 lg:w-3/5 min-h-screen gap-4">
         {% csrf_token %}
         <div class="flex justify-between items-center w-full">
             <h5 class="font-semibold text-xl p-5">Selamat datang, <span
@@ -24,7 +24,7 @@
         {% if todo_list %}
         {% for task in todo_list %}
         <div
-            class="card w-full md:w-3/5 break-words bg-base-100 shadow-xl text-left glass mt-5 mb-5 transform duration-200 transition hover:scale-105">
+            class="card w-full md:w-4/5 lg:w-3/5 break-words bg-base-100 shadow-xl text-left glass mt-5 mb-5 transform duration-200 transition hover:scale-105">
             <div class="card-body">
                 <div class="card-title justify-between items-center">
                     <div>{{task.title}}</div>
