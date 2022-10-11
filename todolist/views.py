@@ -47,6 +47,12 @@ def create_task(request):
             return redirect('todolist:show_todolist')
     return render(request, "create_task.html", {"form" : form})
 
+# src: https://stackoverflow.com/questions/42546006/deleting-clearing-django-contrib-messages
+def delete_messages(request):
+    storage = messages.get_messages(request)
+    for message in storage:
+        pass
+
 def register(request):
     form = UserCreationForm()
     form_errors = ""
@@ -54,9 +60,8 @@ def register(request):
     if request.method == "POST":
         form = UserCreationForm(request.POST)
         if form.is_valid():
+            delete_messages(request)
             form.save()
-            storage = messages.get_messages(request)
-            storage.used = True
             messages.success(request, 'Akun telah berhasil dibuat!')
             return redirect('todolist:login')
         else:
@@ -66,7 +71,6 @@ def register(request):
                 form_errors = form_errors.as_data()
                 form_errors = "".join([str(error) for error in form_errors])
                 form_errors = [errors for errors in form_errors.split("'") if '[' not in errors and ']' not in errors]
-                messages.error(request, form_errors)
             else:
                 messages.error(request, 'Akun gagal dibuat!')
     
