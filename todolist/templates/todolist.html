@@ -22,6 +22,8 @@
                 dataType: "json",
                 success: (data) => {
                     $("#close-task-modal").click();
+                    $("#id_title").val("");
+                    $("#id_description").val("");
 
                     // console.log(data);
                     appendTask(data[0]);
