@@ -15,7 +15,7 @@ $("#add-task-button").click(function (e) {
 });
 ```
 ## Penerapan asynchornous programming di AJAX
-Dengan AJAX, kita dapat melakukan request secara asinkronus. Nanti response dari request tersebut akan kita olah pada file HTML kita. Hal tersebut akan dilakukan secara asinkronus asal mengikuti aturan untuk tidak me-redirect atau me-reload aplikasi kita. 
+Dengan AJAX, kita dapat melakukan request sekaligus mengupdate website kita secara asinkronus. Nanti response dari request tersebut akan kita olah pada file HTML kita, sehingga aplikasi kita dapat terupdate secara asinkronus. Hal tersebut akan dilakukan secara asinkronus asal mengikuti aturan untuk tidak me-redirect atau me-reload aplikasi kita, karena tujuan dari AJAX itu sendiri adalah agar kita tidak me-reload atau me-redirect sehingga dapat dilakukan update secara asinkronus.
 
 ## Implementasi
 - Tambahkan script CDN JQuery
