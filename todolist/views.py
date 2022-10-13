@@ -13,6 +13,7 @@ from django.contrib.auth import authenticate, login, models;
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from .forms import TaskForm
+from django.views.decorators.csrf import csrf_exempt
 
 @login_required(login_url='/todolist/login/')
 def show_todolist(request):
@@ -46,6 +47,36 @@ def create_task(request):
             task.save()
             return redirect('todolist:show_todolist')
     return render(request, "create_task.html", {"form" : form})
+
+@login_required(login_url='/todolist/login/')
+def add_task_ajax(request):
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        description = request.POST.get('description')
+        task = Task.objects.create(user=request.user, title=title, description=description)
+        task.save()
+        return HttpResponse(serializers.serialize('json', [task]), content_type='application/json')
+
+    return HttpResponse("this cant be happening")
+
+@login_required(login_url='/todolist/login/')
+def show_task_json(request):
+    if request.method == 'GET':
+        tasks = Task.objects.filter(user=request.user)
+        data = serializers.serialize('json', tasks)
+        return HttpResponse(data, content_type='application/json')
+
+    return HttpResponse("this cant be happening")
+
+@login_required(login_url='/todolist/login/')
+@csrf_exempt
+def delete_task_ajax(request, task_id):
+    if request.method == 'DELETE':
+        task = Task.objects.filter(user=request.user).get(id=task_id)
+        task.delete()
+        return HttpResponse("Task deleted")
+
+    return HttpResponse("this cant be happening")
 
 # src: https://stackoverflow.com/questions/42546006/deleting-clearing-django-contrib-messages
 def delete_messages(request):

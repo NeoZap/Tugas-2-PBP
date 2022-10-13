@@ -2,6 +2,129 @@
 
 {% block meta %}
 <title>Todolist</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- <script type="text/javascript"> window.CSRF_TOKEN = "{{ csrf_token }}"; </script> -->
+<script>
+    $(document).ready(function () {
+        getTaskData();
+        postTaskData();
+    });
+
+    function postTaskData() {
+        $("form#add-task-form").submit(function (e) {
+            e.preventDefault();
+            var actionURL = e.currentTarget.action;
+            var formData = $(this).serialize();
+            $.ajax({
+                url: actionURL,
+                type: "POST",
+                data: formData,
+                dataType: "json",
+                success: (data) => {
+                    $("#close-task-modal").click();
+
+                    // console.log(data);
+                    appendTask(data[0]);
+                },
+                error: (error) => {
+                    console.log(error);
+                    alert("Error!");
+                }
+            });
+        });
+    }
+
+    function getTaskData() {
+        $.get("./json/", displayTask);
+    }
+
+    function displayTask(data) {
+        const container = $("#task-container");
+        container.empty();
+        if (data.length > 0 && data[0].fields) {
+            data.forEach(task => {
+                appendTask(task);
+            });
+        } else {
+            container.append(`
+            <div id="no-task">
+                <br>
+                <p class="text-lg">
+                    Kamu belum membuat todo list, silakan buat dengan mengklik tombol "Buat Todolist" di atas!
+                </p>
+                <br>
+            </div>
+            `);
+        }
+    }
+
+    function appendTask(task) {
+        const container = $("#task-container");
+        $("#no-task").remove();
+        taskFields = task.fields;
+        container.append(`
+        <div id="task-${task.pk}" class="card w-full md:w-4/5 lg:w-3/5 break-words bg-base-100 shadow-xl text-left glass mt-5 mb-5 transform duration-200 transition hover:scale-105">
+            <div class="card-body">
+                <div class="card-title justify-between items-center">
+                    <div>${taskFields.title}</div>
+                    <div>
+                        ${taskFields.is_finished ? `
+                            <div class="alert alert-success rounded-full p-1 animate-pulse">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-10 w-10"
+                                    fill="none" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            ` : `
+                            <div class="alert alert-error shadow-lg rounded-full p-1 animate-pulse">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-10 w-10"
+                                    fill="none" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                        `}
+                    </div>
+                </div>
+                <div class="font-bold text-[12px]">${taskFields.date}</div>
+                <p>${taskFields.description}</p>
+                <div class="card-actions justify-end items-center">
+                    <div class="flex w-full items-center justify-between">
+                        <div class="flex items-center">
+                            <a type="submit" name="submit" class="btn btn-ghost" onclick=deleteTask(${task.pk})><svg
+                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-8 h-8 text-white">
+                                    <path fill="none" d="M0 0h24v24H0z" />
+                                    <path
+                                        d="M4 8h16v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V8zm2 2v10h12V10H6zm3 2h2v6H9v-6zm4 0h2v6h-2v-6zM7 5V3a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v2h5v2H2V5h5zm2-1v1h6V4H9z" />
+                                </svg></a>
+                        </div>
+                        <div class="flex items-center ">
+                            <a class="btn btn-primary" href="change-task/${task.pk}">Change
+                                status</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        `);
+    }
+
+    function deleteTask(id) {
+        $.ajax({
+            url: `./delete/${id}`,
+            type: "DELETE",
+            success: (data) => {
+                $(`#task-${data.task_id}`).remove();
+                getTaskData();
+            },
+            error: (error) => {
+                console.log(error);
+                alert("Error!");
+            }
+        });
+    }
+</script>
 {% endblock meta %}
 
 {% block logout %}
@@ -12,7 +135,6 @@
 <div class="flex justify-center items-center flex-col gap-10 text-center p-1 w-full">
 
     <div class="flex flex-col justify-start items-center w-[90vw] md:w-4/5 lg:w-3/5 min-h-screen gap-4">
-        {% csrf_token %}
         <div class="flex justify-between items-center w-full">
             <h5 class="font-semibold text-xl p-5">Selamat datang, <span
                     class="text-3xl font-bold text-secondary">{{name}}!</span>
@@ -21,61 +143,42 @@
         </div>
         <div class="text-2xl font-bold text-secondary"><span class="text-3xl text-primary">{{name}}</span>'s todolist:
         </div>
-        {% if todo_list %}
-        {% for task in todo_list %}
-        <div
-            class="card w-full md:w-4/5 lg:w-3/5 break-words bg-base-100 shadow-xl text-left glass mt-5 mb-5 transform duration-200 transition hover:scale-105">
-            <div class="card-body">
-                <div class="card-title justify-between items-center">
-                    <div>{{task.title}}</div>
-                    <div>
-                        {% if task.is_finished %}
-                        <div class="alert alert-success rounded-full p-1 animate-pulse">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-10 w-10"
-                                fill="none" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
+        <div id="task-container" class="w-full flex flex-col items-center"></div>
+        <div></div>
+
+        <!-- The button to open modal -->
+        <label for="add-task-modal" class="btn modal-button">Add todo (ajax moment)</label>
+
+        <!-- Put this part before </body> tag -->
+        <input type="checkbox" id="add-task-modal" class="modal-toggle" />
+        <div class="modal modal-bottom sm:modal-middle">
+            <div class="modal-box relative">
+                <form method="POST" id="add-task-form" class="flex flex-col items-center" action="add/">
+                    {% csrf_token %}
+                    <label id="close-task-modal" for="add-task-modal"
+                        class="btn btn-sm btn-circle absolute right-2 top-2 hover:bg-red-500">✕</label>
+                    <div class="flex flex-col gap-2 bg-white rounded-xl p-2 sm:p-4 shadow-md w-full sm:w-[90%]">
+
+                        <h1 class="font-bold text-xl text-gray-700 text-center">Add todo</h1>
+
+                        <div class="flex flex-col items-start gap-2 w-full">
+                            <label for="id_title" class="font-semibold ml-4">Title</label>
+                            <input class="input input-bordered w-full max-w-x z-5" type="text" name="title"
+                                maxlength="50" required="" id="id_title" />
                         </div>
-                        {% else %}
-                        <div class="alert alert-error shadow-lg rounded-full p-1 animate-pulse">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-10 w-10"
-                                fill="none" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
+                        <div class="flex flex-col items-start gap-2 w-full">
+                            <label for="id_description" class="font-semibold ml-4">Description</label>
+                            <textarea class="textarea textarea-bordered w-full z-5" name="description" cols="40"
+                                rows="10" maxlength="1000" required="" id="id_description"></textarea>
                         </div>
-                        {% endif %}
+
                     </div>
-                </div>
-                <div class="font-bold text-[12px]">{{task.date}}</div>
-                <p>{{task.description}}</p>
-                <div class="card-actions justify-end items-center">
-                    <div class="flex w-full items-center justify-between">
-                        <div class="flex items-center">
-                            <a class="btn btn-ghost" href="{% url 'todolist:delete_task' task.id %}"><svg
-                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-8 h-8 text-white">
-                                    <path fill="none" d="M0 0h24v24H0z" />
-                                    <path
-                                        d="M4 8h16v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V8zm2 2v10h12V10H6zm3 2h2v6H9v-6zm4 0h2v6h-2v-6zM7 5V3a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v2h5v2H2V5h5zm2-1v1h6V4H9z" />
-                                </svg></a>
-                        </div>
-                        <div class="flex items-center ">
-                            <a class="btn btn-primary" href="{% url 'todolist:change_task' task.id %}">Change
-                                status</a>
-                        </div>
+                    <div class="modal-action">
+                        <input class="btn w-[100px] mt-4" type="submit" name="submit" value="Create">
                     </div>
-                </div>
+                </form>
             </div>
         </div>
-        {% endfor %}
-        {% else %}
-        <br>
-        <p class="text-lg">
-            Kamu belum membuat todo list, silakan buat dengan mengklik tombol "Buat Todolist" di atas!
-        </p>
-        <br>
-        {% endif %}
     </div>
 </div>
 {% endblock content %}
