@@ -369,7 +369,7 @@ pada elemen `<head>` di `base.html`
 - Synchronous programming tidak memungkinkan hal diatas, karena masih menggunakan single-thread. Sehingga request / task harus dijalankan secara berurutan dan sinkronus.
 
 ## Event-Driven Programming
-Event adalah action dari user. Sehingga event-driven programming adalah paradigma yang memungkinkan aplikasi kita menjadi lebih terarah dan interaktif. 
+Event adalah action dari user. Sehingga event-driven programming adalah paradigma yang berbasis event, dalam artian tracking event dari user, dan menghandle berdasarkan event apa yang dilakukan dari user, sehingga memungkinkan aplikasi kita menjadi lebih terarah dan interaktif. 
     
 Contoh kasus: Ada button `Add task` yang jika diklik akan me-popup modal berupa form untuk user memasukkan task.
 
